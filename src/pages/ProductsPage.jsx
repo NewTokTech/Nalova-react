@@ -21,7 +21,7 @@ const ProductsPage = () => {
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
-    console.log(searchTerm,"searchTermsearchTermsearchTermsearchTerm");
+    console.log(e.target.value);
     setSearchTerm(term);
     const filteredProducts =
       allProducts && allProducts.filter((product) => product.category === term);
@@ -29,15 +29,8 @@ const ProductsPage = () => {
   };
 
   useEffect(() => {
-    console.log(categoriesData);
-    if (categoryData === null) {
-      const d = allProducts;
-      setData(d);
-    } else {
-      const d =
-        allProducts && allProducts.filter((i) => i.category === categoryData);
-      setData(d);
-    }
+    setSearchData(allProducts);
+
     //    window.scrollTo(0,0);
   }, [allProducts]);
 
@@ -69,10 +62,8 @@ const ProductsPage = () => {
                     {categoriesData.map((id) => (
                       <li key={id.title} className="flex items-center">
                         <input
-                          id={id.title}
                           type="checkbox"
                           value={id.title}
-                          // checked={checkboxes[id]}
                           onChange={handleSearchChange}
                           className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                         />
@@ -81,7 +72,6 @@ const ProductsPage = () => {
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
                           {id.title}
-                          {/* {id.charAt(0).toUpperCase() + id.slice(1)} (56) */}
                         </label>
                       </li>
                     ))}
