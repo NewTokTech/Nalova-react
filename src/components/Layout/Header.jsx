@@ -17,7 +17,7 @@ import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { RxCross1 } from "react-icons/rx";
-import Logo from '../../Assests/logo.png'
+import Logo from "../../Assests/logo.png";
 
 const Header = ({ activeHeading }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -117,26 +117,26 @@ const Header = ({ activeHeading }) => {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            <Link to={'/'}>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-primary  rounded md:bg-transparent md:text-secondary md:p-0 "
-                aria-current="page"
-              >
-                HOME
-              </a>
-            </li>
+            <Link to={"/"}>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-primary  rounded md:bg-transparent md:text-secondary md:p-0 "
+                  aria-current="page"
+                >
+                  HOME
+                </a>
+              </li>
             </Link>
-            <Link to={'/shop'}>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0 "
-              >
-                SHOP
-              </a>
-            </li>
+            <Link to={"/shop"}>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0 "
+                >
+                  SHOP
+                </a>
+              </li>
             </Link>
             <li>
               <a
