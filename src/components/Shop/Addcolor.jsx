@@ -34,7 +34,7 @@ const Addcolor = () => {
   };
   return (
     <div className="w-[90%] 800px:w-[30%] bg-white  shadow h-auto rounded-[4px] p-3 overflow-y-scroll  ">
-      <h5 className="text-[30px] font-Poppins text-center">Add colors</h5>
+      <h5 className="text-[30px]  text-center">Add colors</h5>
       {/* create product form */}
       <form onSubmit={handleSubmit}>
         <br />
