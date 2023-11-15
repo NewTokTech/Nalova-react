@@ -11,13 +11,13 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { BiMenuAltLeft, BiUser } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { RxCross1 } from "react-icons/rx";
-import Logo from '../../Assests/logo.png'
+import Logo from "../../Assests/logo.png";
 
 const Header = ({ activeHeading }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -77,14 +77,20 @@ const Header = ({ activeHeading }) => {
               </div>
             </div>
           </div>
-          <Link to="/" className="lg:block hidden">
-            <button
-              type="button"
-              className="inline-block rounded bg-primary-100 ml-5 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200 border border-2 text-lg text-primary"
+
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <BiUser/> <span>{" "}{user?.name}</span>
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="lg:block hidden rounded bg-primary-100 ml-5 px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200 border-2 text-lg text-primary"
             >
               LOGIN
-            </button>
-          </Link>
+            </Link>
+          )}
+
           <button
             type="button"
             onClick={toggleMobileMenu} // Call the toggle function on button click
@@ -117,26 +123,26 @@ const Header = ({ activeHeading }) => {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            <Link to={'/'}>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-primary  rounded md:bg-transparent md:text-secondary md:p-0 "
-                aria-current="page"
-              >
-                HOME
-              </a>
-            </li>
+            <Link to={"/"}>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-primary  rounded md:bg-transparent md:text-secondary md:p-0 "
+                  aria-current="page"
+                >
+                  HOME
+                </a>
+              </li>
             </Link>
-            <Link to={'/shop'}>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0 "
-              >
-                SHOP
-              </a>
-            </li>
+            <Link to={"/shop"}>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0 "
+                >
+                  SHOP
+                </a>
+              </li>
             </Link>
             <li>
               <a
