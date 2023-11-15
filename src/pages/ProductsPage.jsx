@@ -16,15 +16,18 @@ const ProductsPage = () => {
 
   const [checkboxes, setCheckboxes] = useState(categoriesData);
 
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(allProducts);
+  const [filterItems, setFilterItems] = useState([])
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
-    console.log(e.target.value);
-    setSearchTerm(term);
+
+    let termArr = filterItems;
+    termArr.push(term);
+    setFilterItems(termArr);
+ 
     const filteredProducts =
-      allProducts && allProducts.filter((product) => product.category === term);
+      allProducts && allProducts.filter((product) => termArr.includes(product.category));
     setSearchData(filteredProducts);
   };
 
