@@ -80,7 +80,7 @@ const Header = ({ activeHeading }) => {
 
           {isAuthenticated ? (
             <Link to="/profile" className="flex justify-between items-center align-middle">
-              <BiUser/> <span>{user?.name}</span>
+              <BiUser className="text-lg"/> <span className="pl-2">{user?.name}</span>
             </Link>
           ) : (
             <Link
