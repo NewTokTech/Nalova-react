@@ -41,7 +41,7 @@ const EventCard = ({ active, data }) => {
             <h5 className="font-[500] text-[18px] text-[#d55b45] pr-3 line-through">
               {data.originalPrice}$
             </h5>
-            <h5 className="font-bold text-[20px] text-[#333] font-Roboto">
+            <h5 className="font-bold text-[20px] text-[#333] ">
               {data.discountPrice}$
             </h5>
           </div>

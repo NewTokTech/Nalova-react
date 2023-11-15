@@ -130,7 +130,7 @@ const WithdrawMoney = () => {
             </div>
             {paymentMethod ? (
               <div>
-                <h3 className="text-[22px] font-Poppins text-center font-[600]">
+                <h3 className="text-[22px]  text-center font-[600]">
                   Add new Withdraw Method:
                 </h3>
                 <form onSubmit={handleSubmit}>
@@ -265,7 +265,7 @@ const WithdrawMoney = () => {
               </div>
             ) : (
               <>
-                <h3 className="text-[22px] font-Poppins">
+                <h3 className="text-[22px] ">
                   Available Withdraw Methods:
                 </h3>
 

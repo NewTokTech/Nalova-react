@@ -3,18 +3,15 @@
 @tailwind utilities;
 
 /* fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;500;600;700;800&display=swap');
 
 * {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Rufina";
+  font-family: 'Sen', sans-serif;
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/rufina/v15/Yq6V-LyURyLy-aKCqh5lhOc.woff2)
-    format("woff2");
   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
     U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
   background: #ffff;

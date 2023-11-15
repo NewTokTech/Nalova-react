@@ -122,7 +122,7 @@ const AllWithdraw = () => {
             <div className="flex justify-end w-full">
               <RxCross1 size={25} onClick={() => setOpen(false)} />
             </div>
-            <h1 className="text-[25px] text-center font-Poppins">
+            <h1 className="text-[25px] text-center ">
               Update Withdraw status
             </h1>
             <br />

@@ -18,8 +18,8 @@ const BestDeals = () => {
     <div className="flex justify-center my-10">
       <div className={`${styles.section} `}>
         <div className={`${styles.heading}`}>
-          <h1 className="text-center text-[#3A3836] font-Roboto font-bold">Best selling</h1>
-          <p className="text-center text-[#3A3836] font-Roboto text-sm my-5">Get in on the trend with our curated selection of best-selling styles.</p>
+          <h1 className="text-center text-[#3A3836]  font-bold">Best selling</h1>
+          <p className="text-center text-[#3A3836]  text-sm my-5">Get in on the trend with our curated selection of best-selling styles.</p>
         </div>
         {/* <div class="flex flex-wrap"></div> */}
         <div className="flex flex-wrap">
