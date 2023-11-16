@@ -6,34 +6,38 @@ import Header from "../components/Layout/Header";
 import Loader from "../components/Layout/Loader";
 import ShopCard from "../components/Route/ProductCard/ShopCard";
 import styles from "../styles/styles";
-import { categoriesData } from "../../src/static/data";
+// import { categoriesData } from "../../src/static/data";
+import axios from "axios";
+import { server } from "../server";
 
 const ProductsPage = () => {
-  const [searchParams] = useSearchParams();
-  const categoryData = searchParams.get("category");
   const { allProducts, isLoading } = useSelector((state) => state.products);
   const [data, setData] = useState([]);
-
-  const [checkboxes, setCheckboxes] = useState(categoriesData);
-
   const [searchData, setSearchData] = useState(allProducts);
-  const [filterItems, setFilterItems] = useState([])
+  const [filterItems, setFilterItems] = useState([]);
+  const [categoriesData, setCategoriesData] = useState();
+
+  const getCategory = async () => {
+    const res = await axios.get(`${server}/shop/getCategory`, {
+      withCredentials: true,
+    });
+    setCategoriesData(res.data.categoryData);
+  };
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
-
     let termArr = filterItems;
     termArr.push(term);
     setFilterItems(termArr);
- 
     const filteredProducts =
-      allProducts && allProducts.filter((product) => termArr.includes(product.category));
+      allProducts &&
+      allProducts.filter((product) => termArr.includes(product.category));
     setSearchData(filteredProducts);
   };
 
   useEffect(() => {
     setSearchData(allProducts);
-
+    getCategory();
     //    window.scrollTo(0,0);
   }, [allProducts]);
 
@@ -48,7 +52,7 @@ const ProductsPage = () => {
           <br />
           <div className={`${styles.section}`}>
             <div className="flex">
-              <div className="w-4/12  h-auto">
+              <div className="w-4/12  h-auto lg:block hidden">
                 {/* <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">Category</h6> */}
                 {/* <FilterComponent /> */}
                 <h6 className="mb-3 text-center text-lg text-gray-900 dark:text-white">
@@ -63,18 +67,18 @@ const ProductsPage = () => {
                     aria-labelledby="dropdownDefault"
                   >
                     {categoriesData.map((id) => (
-                      <li key={id.title} className="flex items-center">
+                      <li key={id.id} className="flex items-center">
                         <input
                           type="checkbox"
-                          value={id.title}
+                          value={id.category}
                           onChange={handleSearchChange}
                           className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                         />
                         <label
-                          htmlFor={id.title}
+                          htmlFor={id.category}
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
-                          {id.title}
+                          {id.category}
                         </label>
                       </li>
                     ))}
@@ -82,7 +86,7 @@ const ProductsPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap items-center ">
                 {searchData &&
                   searchData.map((i, index) => (
                     <ShopCard data={i} key={index} />

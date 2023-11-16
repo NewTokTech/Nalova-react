@@ -78,7 +78,7 @@ const DashboardSideBar = ({ active }) => {
       </div>
 
       <div className="w-full flex items-center p-4">
-        <Link to="/dashboard-events" className="w-full flex items-center">
+        <Link to="/dashboard-category" className="w-full flex items-center">
           <MdOutlineLocalOffer
             size={30}
             color={`${active === 5 ? "crimson" : "#555"}`}
@@ -88,13 +88,13 @@ const DashboardSideBar = ({ active }) => {
               active === 5 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            All Events
+            All Category
           </h5>
         </Link>
       </div>
 
       <div className="w-full flex items-center p-4">
-        <Link to="/dashboard-create-event" className="w-full flex items-center">
+        <Link to="/addcategory" className="w-full flex items-center">
           <VscNewFile
             size={30}
             color={`${active === 6 ? "crimson" : "#555"}`}
@@ -104,17 +104,17 @@ const DashboardSideBar = ({ active }) => {
               active === 6 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            Create Event
+            Create Category
           </h5>
         </Link>
       </div>
 
       <div className="w-full flex items-center p-4">
         <Link
-          to="/dashboard-withdraw-money"
+          to="/addSize"
           className="w-full flex items-center"
         >
-          <CiMoneyBill
+           <VscNewFile
             size={30}
             color={`${active === 7 ? "crimson" : "#555"}`}
           />
@@ -123,7 +123,7 @@ const DashboardSideBar = ({ active }) => {
               active === 7 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            Withdraw Money
+            Add new product size
           </h5>
         </Link>
       </div>

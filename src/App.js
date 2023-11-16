@@ -232,7 +232,7 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard-events"
+          path="/dashboard-category"
           element={
             <SellerProtectedRoute>
               <ShopAllEvents />

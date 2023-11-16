@@ -134,7 +134,7 @@ const Header = ({ activeHeading }) => {
                 </a>
               </li>
             </Link>
-            <Link to={"/shop"}>
+            <Link to="/products">
               <li>
                 <a
                   href="#"

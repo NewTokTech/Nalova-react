@@ -23,10 +23,17 @@ const CreateProduct = () => {
   const [originalPrice, setOriginalPrice] = useState();
   const [discountPrice, setDiscountPrice] = useState();
   const [stock, setStock] = useState();
+  const [categoryData, setCategoryData] = useState();
 
   const [size, setSize] = useState();
 
-  const [sizeData, setSizeData] = useState();
+  const getCategory = async () => {
+    const res = await axios.get(`${server}/shop/getCategory`, {
+      withCredentials: true,
+    });
+    console.log(res.data.categoryData);
+    setCategoryData(res.data.categoryData);
+  };
 
   const [isChecked, setIsChecked] = useState(); // Initial state is false
 
@@ -48,6 +55,7 @@ const CreateProduct = () => {
   };
 
   useEffect(() => {
+    getCategory();
     getSize();
     if (error) {
       toast.error(error);
@@ -93,13 +101,13 @@ const CreateProduct = () => {
     newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
     newForm.append("shopId", seller._id);
-    newForm.append("sizeData",isChecked);
-    console.log(newForm.get('sizeData'),"0000000000000000000000");
+    newForm.append("sizeData", isChecked);
+    console.log(newForm.get("sizeData"), "0000000000000000000000");
     // const productSizeData = isChecked.map((iteam)=>iteam === true)
     // console.log(isChecked,"----------productSizeData-------------");
     dispatch(
       createProduct({
-        sizeData:isChecked,
+        sizeData: isChecked,
         name,
         description,
         category,
@@ -160,10 +168,10 @@ const CreateProduct = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="Choose a category">Choose a category</option>
-            {categoriesData &&
-              categoriesData.map((i) => (
-                <option value={i.title} key={i.title}>
-                  {i.title}
+            {categoryData &&
+              categoryData.map((i) => (
+                <option value={i.category} key={i.category}>
+                  {i.category}
                 </option>
               ))}
           </select>

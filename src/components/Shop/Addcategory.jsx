@@ -2,9 +2,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { server } from "../../server";
+import { useNavigate } from "react-router-dom";
 
 const Addcategory = () => {
   const [category, setCategory] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +18,9 @@ const Addcategory = () => {
       { withCredentials: true }
     );
     console.log(res);
+    if(res){
+      navigate('/dashboard-category')
+    }
   };
   return (
     <div className="w-[90%] 800px:w-[30%] bg-white  shadow h-auto rounded-[4px] p-3 overflow-y-scroll  ">
