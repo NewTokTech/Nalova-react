@@ -121,7 +121,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   </h3>
                 </div>
 
-                <Link to={`/shop/preview/${data?.shop._id}`}>
+              
                   <div className="my-5 gap-3 flex ">
                     {sizeArray &&
                       sizeArray.map((value) => {
@@ -141,7 +141,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                         );
                       })}
                   </div>
-                </Link>
+             
 
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>

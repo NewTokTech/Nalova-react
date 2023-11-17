@@ -6,7 +6,7 @@ import bannerImg2 from "../../../Assests/hero-2.png";
 
 const Hero = () => {
   return (
-    <div className="flex   bg-[#222a32] w-full xl:px-5  px-5 h-[60vh] xl:h-[90vh] mt-20 ">
+    <div className="flex  bg-[#222a32] w-full xl:px-5  px-5 h-[60vh] xl:h-[90vh] mt-20 ">
       <div className="bg-[#222a32] w-6/12 flex h-auto  items-center xl:ml-28">
         <div className="">
           <h1

@@ -2,10 +2,10 @@ import { React, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
-import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import logo from "../../Assests/logo.png";
 
 const Singup = () => {
   const [email, setEmail] = useState("");
@@ -28,9 +28,14 @@ const Singup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log( name, email, password, phoneNumber );
+    console.log(name, email, password, phoneNumber);
     axios
-      .post(`${server}/user/create-user`, { name, email, password, phoneNumber })
+      .post(`${server}/user/create-user`, {
+        name,
+        email,
+        password,
+        phoneNumber,
+      })
       .then((res) => {
         toast.success(res.data.message);
         setName("");
@@ -51,6 +56,9 @@ const Singup = () => {
         </h2>
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="flex justify-center">
+          <img src={logo} alt="" className="w-44 my-5" />
+        </div>
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -92,7 +100,6 @@ const Singup = () => {
                 />
               </div>
             </div>
-            
 
             <div>
               <label
@@ -146,8 +153,6 @@ const Singup = () => {
                 )}
               </div>
             </div>
-
-         
 
             <div>
               <button

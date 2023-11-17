@@ -235,12 +235,7 @@ const ProductDetails = ({ data }) => {
               </div>
             </div>
           </div>
-          {/* <ProductDetailsInfo
-            data={data}
-            products={products}
-            totalReviewsLength={totalReviewsLength}
-            averageRating={averageRating}
-          /> */}
+    
           <br />
           <br />
         </div>

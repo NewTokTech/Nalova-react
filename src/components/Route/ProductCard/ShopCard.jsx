@@ -44,48 +44,21 @@ const ProductCard = ({ data, isEvent }) => {
     dispatch(addToWishlist(data));
   };
 
-  const addToCartHandler = (id) => {
-    const isItemExists = cart && cart.find((i) => i._id === id);
-    if (isItemExists) {
-      toast.error("Item already in cart!");
-    } else {
-      if (data.stock < 1) {
-        console.log(data, "data");
-        toast.error("Product stock limited!");
-      } else {
-        console.log(data, "product data");
-        const cartData = { ...data, qty: 1 };
-        dispatch(addTocart(cartData));
-        toast.success("Item added to cart successfully!");
-      }
-    }
-  };
+  
 
   return (
     <>
-      <div className="w-full  bg-white  relative cursor-pointer my-5  md:w-1/2 lg:w-1/3 xl:w-1/3 p-4 ">
+      <div className="w-full  bg-white  relative cursor-pointer my-5  md:w-1/2 lg:w-1/3 xl:w-1/3 p-4 " onClick={() => setOpen(!open)}>
         {/* <div className="flex justify-end"></div> */}
-        <Link
-          to={`${
-            isEvent === true
-              ? `/product/${data._id}?isEvent=true`
-              : `/product/${data._id}`
-          }`}
-        >
+   
           <img
             src={`${data.images && data.images[0]?.url}`}
             alt=""
-            className="w-[250px] h-[300px] "
+            className="xl:w-[250px] w-full h-[300px] "
           />
-        </Link>
+      
 
-        <Link
-          to={`${
-            isEvent === true
-              ? `/product/${data._id}?isEvent=true`
-              : `/product/${data._id}`
-          }`}
-        >
+ 
           <h4 className=" text-[16px] text-center mt-5 font-Poppins w-[250px]">
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </h4>
@@ -104,7 +77,7 @@ const ProductCard = ({ data, isEvent }) => {
             </h4>
           </div>
           {/* </div> */}
-        </Link>
+       
 
         {/* side options */}
         <div>
