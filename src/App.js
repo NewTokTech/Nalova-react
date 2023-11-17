@@ -13,11 +13,8 @@ import {
   CheckoutPage,
   PaymentPage,
   OrderSuccessPage,
-  ProductDetailsPage,
   ProfilePage,
-  ShopCreatePage,
   SellerActivationPage,
-  ShopLoginPage,
   OrderDetailsPage,
   TrackOrderPage,
   UserInbox,
@@ -29,13 +26,11 @@ import {
   ShopCreateEvents,
   ShopAllEvents,
   ShopAllCoupouns,
-  ShopPreviewPage,
   ShopAllOrders,
   ShopOrderDetails,
   ShopAllRefunds,
   ShopSettingsPage,
   ShopWithDrawMoneyPage,
-  ShopInboxPage,
 } from "./routes/ShopRoutes";
 import {
   AdminDashboardPage,
@@ -60,10 +55,8 @@ import axios from "axios";
 import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import Addcategory from "./components/Shop/Addcategory.jsx";
 import ShopAddCategory from "./pages/Shop/ShopAddCategory.jsx";
 import ShopAddsize from "./pages/Shop/ShopAddsize.jsx";
-import ShopAddcolor from "./pages/Shop/ShopAddcolor.jsx";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -109,7 +102,6 @@ const App = () => {
           element={<SellerActivationPage />}
         />
         <Route path="/products" element={<ProductsPage />} />
-        {/* <Route path="/product/:id" element={<ProductDetailsPage />} /> */}
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
@@ -255,14 +247,14 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/dashboard-messages"
           element={
             <SellerProtectedRoute>
               <ShopInboxPage />
             </SellerProtectedRoute>
           }
-        />
+        /> */}
         {/* Admin Routes */}
         <Route
           path="/admin/dashboard"

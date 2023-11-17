@@ -4,13 +4,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { server } from "../server";
-import { useSelector } from "react-redux";
 
 const ActivationPage = () => {
   const { activation_token } = useParams();
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (activation_token) {

@@ -15,7 +15,7 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState(allProducts);
   const [filterItems, setFilterItems] = useState([]);
-  const [categoriesData, setCategoriesData] = useState();
+  const [categoriesData, setCategoriesData] = useState([]);
 
   const getCategory = async () => {
     const res = await axios.get(`${server}/shop/getCategory`, {
@@ -38,12 +38,13 @@ const ProductsPage = () => {
   useEffect(() => {
     setSearchData(allProducts);
     getCategory();
-    //    window.scrollTo(0,0);
   }, [allProducts]);
+
+  console.log(categoriesData);
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && categoriesData ? (
         <Loader />
       ) : (
         <div className="mt-20">
@@ -51,7 +52,7 @@ const ProductsPage = () => {
           <br />
           <br />
           <div className={`${styles.section}`}>
-            <div className="flex">
+            <div className="flex ">
               <div className="w-4/12  h-auto lg:block hidden">
                 {/* <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">Category</h6> */}
                 {/* <FilterComponent /> */}
@@ -61,7 +62,6 @@ const ProductsPage = () => {
 
                 <div className="flex items-center justify-center p-4">
                   {/* <div id="dropdown" className="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"> */}
-
                   <ul
                     className="space-y-2 text-sm"
                     aria-labelledby="dropdownDefault"
@@ -86,7 +86,7 @@ const ProductsPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center ">
+              <div className="flex flex-wrap w-full ">
                 {searchData &&
                   searchData.map((i, index) => (
                     <ShopCard data={i} key={index} />

@@ -4,19 +4,12 @@ import { Link } from "react-router-dom";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import styles from "../../styles/styles";
-import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
-  AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import { BiMenuAltLeft, BiUser } from "react-icons/bi";
-import { CgProfile } from "react-icons/cg";
-import DropDown from "./DropDown";
-import Navbar from "./Navbar";
+import {  BiUser } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import { RxCross1 } from "react-icons/rx";
 import Logo from "../../Assests/logo.png";
 
 const Header = ({ activeHeading }) => {
@@ -27,22 +20,15 @@ const Header = ({ activeHeading }) => {
   };
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { isSeller } = useSelector((state) => state.seller);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
-  const { allProducts } = useSelector((state) => state.products);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchData, setSearchData] = useState(null);
-  const [active, setActive] = useState(false);
-  const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
-  const [open, setOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 right-0  p-4 bg-white  w-full z-20  left-0 border-b border-gray-200 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-        <a href="https://flowbite.com/" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />
         </a>
         <div className="flex md:order-2 mt-3">
@@ -79,8 +65,12 @@ const Header = ({ activeHeading }) => {
           </div>
 
           {isAuthenticated ? (
-            <Link to="/profile" className="flex justify-between items-center align-middle">
-              <BiUser size={30}/> <span className="pl-2 hidden md:block">{user?.name}</span>
+            <Link
+              to="/profile"
+              className="flex justify-between items-center align-middle"
+            >
+              <BiUser size={30} />{" "}
+              <span className="pl-2 hidden md:block">{user?.name}</span>
             </Link>
           ) : (
             <Link
@@ -137,7 +127,7 @@ const Header = ({ activeHeading }) => {
             <Link to="/products">
               <li>
                 <a
-                  href="#"
+                  href="/products"
                   className="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0 "
                 >
                   SHOP
