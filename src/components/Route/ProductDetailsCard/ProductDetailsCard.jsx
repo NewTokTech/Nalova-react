@@ -27,8 +27,11 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
   const getSize = (data) => {
     if (data.productSize) {
+      console.log(data.productSize, "pp---");
       const keys = Object.keys(data.productSize);
+
       const sizeData = keys.reverse();
+      console.log(sizeData, "--");
       setSizeArray(sizeData);
       setSize(sizeData[0]);
     }
@@ -50,7 +53,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
       toast.error("Item already in cart!");
     } else {
       const productStock = data.productSize[size];
-      if (productStock-1 < count) {
+      if (productStock < count) {
         toast.error(
           `Product stock limited! only have ${productStock} products available`
         );
@@ -121,27 +124,29 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   </h3>
                 </div>
 
-              
-                  <div className="my-5 gap-3 flex ">
-                    {sizeArray &&
-                      sizeArray.map((value) => {
-                        return (
-                          <div onClick={() => setSize(value)}>
-                            <h1
-                              className={`text-black w-10 h-10 text-center  text-sm pt-2  rounded-full border-[2px] ${
-                                size === value
-                                  ? "border-red-600 text-red-600"
-                                  : "border-black text-black"
-                              }`}
-                              // onClick={setSize(value)}
-                            >
-                              {value}
-                            </h1>
-                          </div>
-                        );
-                      })}
-                  </div>
-             
+                <div className="my-5 gap-3 flex ">
+                  {sizeArray &&
+                    sizeArray.map((value) => {
+                      return (
+                        <>
+                          {data.productSize[value] >= 1 ? (
+                            <div onClick={() => setSize(value)}>
+                              <h1
+                                className={`text-black w-10 h-10 text-center  text-sm pt-2  rounded-full border-[2px] ${
+                                  size === value
+                                    ? "border-red-600 text-red-600"
+                                    : "border-black text-black"
+                                }`}
+                                // onClick={setSize(value)}
+                              >
+                                {value}
+                              </h1>
+                            </div>
+                          ) : null}
+                        </>
+                      );
+                    })}
+                </div>
 
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>

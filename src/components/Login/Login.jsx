@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import logo from '../../Assests/logo.png'
+import logo from "../../Assests/logo.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,8 +13,20 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
+  const validateEmail = (inputEmail) => {
+    // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(inputEmail);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const validateData = validateEmail(email);
+    if (validateData === false) {
+      toast.error("enter your Valid email");
+      return;
+    }
 
     await axios
       .post(
@@ -45,7 +57,7 @@ const Login = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div className="flex justify-center">
-           <img src={logo} alt="" className="w-44 my-5" />
+            <img src={logo} alt="" className="w-44 my-5" />
           </div>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>

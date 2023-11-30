@@ -50,6 +50,7 @@ const AllProducts = () => {
     const res = await axios.get(`${server}/product/getProductSize/${id}`, {
       withCredentials: true,
     });
+    console.log(res,"textt");
     const keys = Object.keys(res.data.productsSize.productSize);
     setProductsSize(keys);
   };

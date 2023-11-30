@@ -5,14 +5,28 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const FeaturedProduct = () => {
   const { allProducts } = useSelector((state) => state.products);
-  const [data, setData] = useState(); 
+  const [data, setData] = useState();
   useEffect(() => {
-    setData(allProducts);
+    if(allProducts){
+      const productdatas = allProducts.filter((a, b) => {
+        let totalValue = 0;
+        for (let size in a.productSize) {
+          totalValue += parseInt(a.productSize[size], 10);
+        }
+        console.log(totalValue, "let totalValue = 0; totalValue");
+        return 0 < totalValue;
+      });
+      console.log(productdatas);
+      setData(productdatas);
+    }else{
+      setData(allProducts)
+    }
+   
+   
   }, [allProducts]);
   // setData(allProducts)
-// console.log(allProducts);
+  // console.log(allProducts);
   return (
-    
     <div className="flex justify-center my-10">
       <div className={`${styles.section} `}>
         <div className={`${styles.heading}`}>

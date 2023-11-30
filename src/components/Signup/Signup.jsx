@@ -14,21 +14,21 @@ const Singup = () => {
   const [visible, setVisible] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState(null);
 
-  // const handleFileInputChange = (e) => {
-  //   const reader = new FileReader();
-
-  //   reader.onload = () => {
-  //     if (reader.readyState === 2) {
-  //       setAvatar(reader.result);
-  //     }
-  //   };
-
-  //   reader.readAsDataURL(e.target.files[0]);
-  // };
+  const validateEmail = (inputEmail) => {
+    // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(inputEmail);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, password, phoneNumber);
+    const validateData = validateEmail(email);
+    if (validateData === false) {
+      toast.error("enter your Valid email");
+      return;
+    }
+
     axios
       .post(`${server}/user/create-user`, {
         name,
